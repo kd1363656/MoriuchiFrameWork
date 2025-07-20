@@ -94,6 +94,30 @@
     <Filter Include="Src\Application\Utility">
       <UniqueIdentifier>{23ce048b-b1bc-4bc3-a2ca-cddf4f3ff7c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Component">
+      <UniqueIdentifier>{a06231a7-b934-4862-bb5a-9c487062e237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Transform">
+      <UniqueIdentifier>{914ef5a6-4af7-442c-9f92-d0c9f3276008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Transform\3D">
+      <UniqueIdentifier>{f009a3e3-82dc-4b3e-8242-667e192ba1ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Transform\2D">
+      <UniqueIdentifier>{9bf5769d-7073-44ee-8dba-f56e056433a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\System\Calculation">
+      <UniqueIdentifier>{fd91d208-c5d3-4d37-9951-bbbd7e3cea12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Utility\Common">
+      <UniqueIdentifier>{2ddeaffc-753b-4def-ba6c-332880ef5ae3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Factory">
+      <UniqueIdentifier>{00ab0bcf-50f9-4e09-9d5c-e1f6aeb820fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Utility\String">
+      <UniqueIdentifier>{4df77844-9df3-4680-a7df-2aba78a09f0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -282,6 +306,30 @@
     <ClInclude Include="Src\Application\Utility\SingletonBase.h">
       <Filter>Src\Application\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Component\ComponentBase.h">
+      <Filter>Src\Application\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\GameObject\GameObject.h">
+      <Filter>Src\Application\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Component\Transform\3D\Transform3DComponent.h">
+      <Filter>Src\Application\Component\Transform\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\System\Calculation\Calculation.h">
+      <Filter>Src\System\Calculation</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Utility\Common\CommonConstant.h">
+      <Filter>Src\Application\Utility\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Factory\Factory.h">
+      <Filter>Src\Application\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Utility\String\StringUtility.h">
+      <Filter>Src\Application\Utility\String</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Utility\Common\CommonStruct.h">
+      <Filter>Src\Application\Utility\Common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -436,6 +484,15 @@
     </ClCompile>
     <ClCompile Include="Src\System\Input\RawInputManager.cpp">
       <Filter>Src\System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\GameObject\GameObject.cpp">
+      <Filter>Src\Application\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\Transform\3D\Transform3DComponent.cpp">
+      <Filter>Src\Application\Component\Transform\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Factory\Factory.cpp">
+      <Filter>Src\Application\Factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
