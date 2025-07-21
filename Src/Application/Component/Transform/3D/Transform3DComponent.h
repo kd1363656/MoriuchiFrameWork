@@ -10,7 +10,7 @@ public:
 	uint32_t GetTypeID() const override { return ComponentID::GetTypeID<Transform3DComponent>(); }
 
 	void Init() override;
-
+	
 	void PreUpdate() override;
 
 	void ImGuiComponentViewer() override;

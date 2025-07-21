@@ -139,6 +139,15 @@
     <Filter Include="Src\Application\Utility\Singleton">
       <UniqueIdentifier>{2d82b67c-2d92-473f-9001-5ba273359e4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Component\Specialized">
+      <UniqueIdentifier>{19a03fbe-42fb-48c1-b7fe-d73b99885af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Specialized\Camera">
+      <UniqueIdentifier>{4b30eab8-3a89-4e52-8d94-0e6f2c742f52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Parent">
+      <UniqueIdentifier>{f72096e1-9a0c-46ab-85b1-a0ab0784581c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -369,6 +378,12 @@
     <ClInclude Include="Src\Application\Utility\Singleton\SingletonBase.h">
       <Filter>Src\Application\Utility\Singleton</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Component\Specialized\Camera\CameraComponent.h">
+      <Filter>Src\Application\Component\Specialized\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Component\ParentComponent\ParentComponent.h">
+      <Filter>Src\Application\Component\Parent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -544,6 +559,12 @@
     </ClCompile>
     <ClCompile Include="Src\System\ImGui\ImGuiManager.cpp">
       <Filter>Src\System\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\Specialized\Camera\CameraComponent.cpp">
+      <Filter>Src\Application\Component\Specialized\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\ParentComponent\ParentComponent.cpp">
+      <Filter>Src\Application\Component\Parent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
