@@ -40,10 +40,10 @@ public :
 	}
 
 	// 現在のシーンのオブジェクトリストを取得
-	const std::list<std::shared_ptr<KdGameObject>>& GetGameObjectList();
+	const std::list<std::shared_ptr<GameObject>>& GetGameObjectList();
 
 	// 現在のシーンにオブジェクトを追加
-	void AddGameObject(const std::shared_ptr<KdGameObject>& _obj);
+	void AddGameObject(const std::shared_ptr<GameObject>& GameObject);
 
 private:
 
@@ -59,8 +59,9 @@ private:
 	// 次のシーンの種類を保持している変数
 	SceneType m_nextSceneType = m_currentSceneType;
 
-private:
-
+	// ==============================
+	// "Singleton"
+	// ==============================
 	friend class SingletonBase;
 
 	SceneManager ()          = default;

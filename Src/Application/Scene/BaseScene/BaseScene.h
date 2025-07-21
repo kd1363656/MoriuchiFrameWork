@@ -1,8 +1,10 @@
 ﻿#pragma once
 
+class GameObject;
+
 class BaseScene
 {
-public :
+public:
 
 	BaseScene         () = default;
 	virtual ~BaseScene() = default;
@@ -19,13 +21,13 @@ public :
 	void DrawDebug ();
 
 	// オブジェクトリストを取得
-	const std::list<std::shared_ptr<KdGameObject>>& GetGameObjectList()
+	const std::list<std::shared_ptr<GameObject>>& GetGameObjectList() const
 	{
 		return m_gameObjectList;
 	}
 	
 	// オブジェクトリストに追加
-	void AddGameObject(const std::shared_ptr<KdGameObject>& _obj)
+	void AddGameObject(const std::shared_ptr<GameObject> _obj)
 	{
 		m_gameObjectList.push_back(_obj);
 	}
@@ -36,5 +38,5 @@ protected:
 	virtual void Event();
 	
 	// 全オブジェクトのアドレスをリストで管理
-	std::list<std::shared_ptr<KdGameObject>> m_gameObjectList;
+	std::list<std::shared_ptr<class GameObject>> m_gameObjectList;
 };

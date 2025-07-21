@@ -2,12 +2,15 @@
 
 void GameObject::Init()
 {
+	m_deleteRequested = false;
+
 	for (const auto& [key_ , value_] : m_componentList)
 	{
 		value_->Init();
+		value_->SetOwner(shared_from_this());
 	}
 }
-void GameObject::PostLoadInit()
+void GameObject::PostLoadInit() const
 {
 	for (const auto& [key_, value_] : m_componentList)
 	{
@@ -25,14 +28,14 @@ void GameObject::PreUpdate()
 		value_->PreUpdate();
 	}
 }
-void GameObject::Update()
+void GameObject::Update() const
 {
 	for (const auto& [key_, value_] : m_componentList)
 	{
 		value_->Update();
 	}
 }
-void GameObject::PostUpdate()
+void GameObject::PostUpdate() const
 {
 	for (const auto& [key_, value_] : m_componentList)
 	{

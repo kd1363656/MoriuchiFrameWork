@@ -1,21 +1,55 @@
 ﻿#include "Factory.h"
 
-#include "../GameObject/Camera/TPSCamera/TPSCamera.h"
+#include "../GameObject/GameObject.h"
 
 #include "../Component/Transform/3D/Transform3DComponent.h"
 
+#include "../Scene/SceneManager.h"
+
 void Factory::Init()
 {
-	RegisterGameObjectFactoryMethod();
+	RegisterComponentFactoryMethod();
 }
 
-void Factory::RegisterGameObjectFactoryMethod()
+void Factory::AttachComponent(std::weak_ptr<GameObject> GameObject, std::string_view WantAttachComponent)
+{
+	auto itr_ = m_componentFactoryMethodList.find(WantAttachComponent);
+
+	if (itr_ == m_componentFactoryMethodList.end())
+	{
+		KdDebugGUI::Instance().AddLog("Component factory method not found: %s\n", WantAttachComponent.data());
+		return;
+	}
+
+	auto component_ = itr_->second();
+	// コンポーネントの所持者、名前を設定
+	component_->SetOwner   (GameObject);
+	component_->SetTypeName(WantAttachComponent);
+
+	if (auto gameObject_ = GameObject.lock())
+	{
+		gameObject_->AddComponent(component_);
+	}
+	else
+	{
+		KdDebugGUI::Instance().AddLog("GameObject is expired when attaching component: %s\n", WantAttachComponent.data());
+	}
+}
+
+void Factory::CreateGameObject() const
+{
+	auto gameObject_ = std::make_shared<GameObject>();
+
+	SceneManager::GetInstance().AddGameObject(gameObject_);
+}
+
+void Factory::RegisterComponentFactoryMethod()
 {
 #ifdef _DEBUG
 	KdDebugGUI::Instance().AddLog("============ Start register gameObject factory ============\n\n");
 #endif // _DEBUG
 
-	RegisterGameObjectFactoryMethod<Transform3DComponent>();
+	RegisterComponentFactoryMethod<Transform3DComponent>();
 
 #ifdef _DEBUG
 	KdDebugGUI::Instance().AddLog("\n============ End register gameObject factory ==============\n\n\n\n");

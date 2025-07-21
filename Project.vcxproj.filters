@@ -118,6 +118,18 @@
     <Filter Include="Src\Application\Utility\String">
       <UniqueIdentifier>{4df77844-9df3-4680-a7df-2aba78a09f0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Component\Render">
+      <UniqueIdentifier>{c58038dc-e156-49c9-a9f8-58054cbf94b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Utility\BitShift">
+      <UniqueIdentifier>{00d05c4e-ef14-4843-afa1-e3be8e532651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Render\StaticModelComponent">
+      <UniqueIdentifier>{d0e83211-a4f9-413c-98d7-5aed7f9d919d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Utility\Json">
+      <UniqueIdentifier>{909d64c1-f01d-4a5e-bdd4-b50a5b73a46a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -330,6 +342,18 @@
     <ClInclude Include="Src\Application\Utility\Common\CommonStruct.h">
       <Filter>Src\Application\Utility\Common</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Component\Render\RenderComponent.h">
+      <Filter>Src\Application\Component\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Utility\BitShift\BitShiftUtility.h">
+      <Filter>Src\Application\Utility\BitShift</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Component\Render\StaticModelComponent\StaticModelComponent.h">
+      <Filter>Src\Application\Component\Render\StaticModelComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Utility\Json\JsonUtility.h">
+      <Filter>Src\Application\Utility\Json</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -493,6 +517,12 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Factory\Factory.cpp">
       <Filter>Src\Application\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\Render\RenderComponent.cpp">
+      <Filter>Src\Application\Component\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\Render\StaticModelComponent\StaticModelComponent.cpp">
+      <Filter>Src\Application\Component\Render\StaticModelComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

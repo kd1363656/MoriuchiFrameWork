@@ -3,6 +3,7 @@
 #include "../../../Utility/Common/CommonConstant.h"
 
 #include "../../../../System/Calculation/Calculation.h"
+#include "../../../Utility/Json/JsonUtility.h"
 
 void Transform3DComponent::Init()
 {
@@ -21,6 +22,25 @@ void Transform3DComponent::PreUpdate()
 	const Math::Matrix scaleMat_    = Math::Matrix::CreateScale         (m_scale   );
 
 	m_matrix = scaleMat_ * rotationMat_ * transMat_;
+}
+
+void Transform3DComponent::Deserialize(const nlohmann::json& Json)
+{
+	if(Json.is_null()) { return; }
+
+	if (Json.contains("Position")) { m_position = JsonUtility::JsonToVec3      (Json["Position"]); }
+	if (Json.contains("Rotation")) { m_rotation = JsonUtility::JsonToQuaternion(Json["Rotation"]); }
+	if (Json.contains("Scale"   )) { m_scale    = JsonUtility::JsonToVec3      (Json["Scale"   ]); }
+}
+nlohmann::json Transform3DComponent::Serialize()
+{
+	auto json_ = nlohmann::json();
+	
+	json_["Position"] = JsonUtility::Vec3ToJson      (m_position);
+	json_["Rotation"] = JsonUtility::QuaternionToJson(m_rotation);
+	json_["Scale"   ] = JsonUtility::Vec3ToJson      (m_scale   );
+	
+	return json_;
 }
 
 void Transform3DComponent::ImGuiComponentViewer()

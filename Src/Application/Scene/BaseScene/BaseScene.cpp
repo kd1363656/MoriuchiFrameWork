@@ -1,29 +1,31 @@
 ﻿#include "BaseScene.h"
 
+#include "../../GameObject/GameObject.h"
+
+#include "../../Component/Render/StaticModelComponent/StaticModelComponent.h"
+
+#include "../../Component/Render/RenderComponent.h"
+
 void BaseScene::PreUpdate()
 {
-	// Updateの前の更新処理
-	// オブジェクトリストの整理 ・・・ 無効なオブジェクトを削除
-	auto it = m_gameObjectList.begin();
+	auto itr_ = m_gameObjectList.begin();
 
-	while (it != m_gameObjectList.end())
+	// 削除依頼のあるゲームオブジェクトを削除
+	while (itr_ != m_gameObjectList.end())
 	{
-		if ((*it)->IsExpired())	// IsExpired() ・・・ 無効ならtrue
+		if ((*itr_)->GetIsDeleteRequested())
 		{
-			// 無効なオブジェクトをリストから削除
-			it = m_gameObjectList.erase(it);
+			itr_ = m_gameObjectList.erase(itr_);
 		}
 		else
 		{
-			++it;	// 次の要素へイテレータを進める
+			++itr_;
 		}
 	}
 
-	// ↑の後には有効なオブジェクトだけのリストになっている
-
-	for (auto& obj : m_gameObjectList)
+	for (const auto& gameObject_ : m_gameObjectList)
 	{
-		obj->PreUpdate();
+		gameObject_->PreUpdate();
 	}
 }
 
@@ -33,25 +35,25 @@ void BaseScene::Update()
 	Event();
 
 	// KdGameObjectを継承した全てのオブジェクトの更新 (ポリモーフィズム)
-	for (auto& obj : m_gameObjectList)
+	for (const auto& gameObject_ : m_gameObjectList)
 	{
-		obj->Update();
+		gameObject_->Update();
 	}
 }
 
 void BaseScene::PostUpdate()
 {
-	for (auto& obj : m_gameObjectList)
+	for (const auto& gameObject_ : m_gameObjectList)
 	{
-		obj->PostUpdate();
+		gameObject_->PostUpdate();
 	}
 }
 
 void BaseScene::PreDraw()
 {
-	for (auto& obj : m_gameObjectList)
+	for (const auto& gameObject_ : m_gameObjectList)
 	{
-		obj->PreDraw();
+		gameObject_->PreUpdate();
 	}
 }
 
@@ -63,7 +65,10 @@ void BaseScene::Draw()
 	{
 		for (auto& obj : m_gameObjectList)
 		{
-			obj->GenerateDepthMapFromLight();
+			if(auto render_ = obj->GetComponent<StaticModelComponent>().lock())
+			{
+				render_->Draw(RenderComponent::DrawType::GenerateDepthFromMapLight);
+			}
 		}
 	}
 	KdShaderManager::Instance().m_StandardShader.EndGenerateDepthMapFromLight();
@@ -74,7 +79,10 @@ void BaseScene::Draw()
 	{
 		for (auto& obj : m_gameObjectList)
 		{
-			obj->DrawUnLit();
+			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
+			{
+				render_->Draw(RenderComponent::DrawType::UnLit);
+			}
 		}
 	}
 	KdShaderManager::Instance().m_StandardShader.EndUnLit();
@@ -85,7 +93,10 @@ void BaseScene::Draw()
 	{
 		for (auto& obj : m_gameObjectList)
 		{
-			obj->DrawLit();
+			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
+			{
+				render_->Draw(RenderComponent::DrawType::Lit);
+			}
 		}
 	}
 	KdShaderManager::Instance().m_StandardShader.EndLit();
@@ -96,7 +107,10 @@ void BaseScene::Draw()
 	{
 		for (auto& obj : m_gameObjectList)
 		{
-			obj->DrawEffect();
+			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
+			{
+				render_->Draw(RenderComponent::DrawType::Effect);
+			}
 		}
 	}
 	KdShaderManager::Instance().m_StandardShader.EndUnLit();
@@ -107,7 +121,10 @@ void BaseScene::Draw()
 	{
 		for (auto& obj : m_gameObjectList)
 		{
-			obj->DrawBright();
+			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
+			{
+				render_->Draw(RenderComponent::DrawType::Bright);
+			}
 		}
 	}
 	KdShaderManager::Instance().m_postProcessShader.EndBright();
@@ -121,7 +138,7 @@ void BaseScene::DrawSprite()
 	{
 		for (auto& obj : m_gameObjectList)
 		{
-			obj->DrawSprite();
+			//obj->DrawSprite();
 		}
 	}
 	KdShaderManager::Instance().m_spriteShader.End();
@@ -135,7 +152,7 @@ void BaseScene::DrawDebug()
 	{
 		for (auto& obj : m_gameObjectList)
 		{
-			obj->DrawDebug();
+			//obj->DrawDebug();
 		}
 	}
 	KdShaderManager::Instance().m_StandardShader.EndUnLit();

@@ -25,9 +25,13 @@ public:
 	virtual void           Deserialize(const nlohmann::json& Json) { /*　必要に応じてオーバーライドしてください */ }
 	virtual nlohmann::json Serialize  ()                           { return nlohmann::json();					   }
 	
+	std::string_view GetTypeName() const { return m_typeName; }
+
 	bool GetIsDeleteRequested()const { return m_isDeleteRequested; }
 
 	void SetOwner(std::weak_ptr<GameObject> Set) { m_owner = Set; }
+
+	void SetTypeName(const std::string_view Set) { m_typeName = Set; }
 
 protected:
 
@@ -36,6 +40,8 @@ protected:
 private:
 
 	std::weak_ptr<GameObject> m_owner;
+
+	std::string m_typeName = "";
 
 	bool m_isDeleteRequested = false;
 };
