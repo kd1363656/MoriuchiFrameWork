@@ -2,7 +2,7 @@
 
 class Transform3DComponent;
 
-class RenderComponent : public ComponentBase
+class Render3DComponent : public ComponentBase
 {
 
 public:
@@ -14,37 +14,35 @@ public:
 		Effect                    = 1 << 2 ,
 		Bright                    = 1 << 3 ,
 		UI                        = 1 << 4 ,
-		Sprite                    = 1 << 5 ,
-		GenerateDepthFromMapLight = 1 << 6 ,
+		GenerateDepthFromMapLight = 1 << 5 ,
 	};
 
 	enum class ShaderType
 	{
 		AlphaDither = 1 << 0 ,
-		Toon        = 1 << 1,
+		Toon        = 1 << 1 ,
 	};
 
-	RenderComponent ()          = default;
-	~RenderComponent() override = default;
+	Render3DComponent ()          = default;
+	~Render3DComponent() override = default;
 
-	void PostLoadInit()override;
+	void PostLoadInit() override;
 
 	void ImGuiComponentViewer() override;
 
-	uint32_t GetTypeID() const override { return ComponentID::GetTypeID<RenderComponent>(); }
+	void           LoadPrefabData(const nlohmann::json& Json) override;
+	nlohmann::json SavePrefabData()                           override;
+	
+	uint32_t GetTypeID() const override { return ComponentID::GetTypeID<Render3DComponent>(); }
 
 	uint32_t GetDrawType  () const { return m_drawType;   }
 	uint32_t GetShaderType() const { return m_shaderType; }
 
 	std::weak_ptr<Transform3DComponent> GetTransform3DComponent() const { return m_transform3DComponent; }
 
-	std::string_view GetAssetFilePath() const { return m_assetFilePath; }
-
 	const Math::Color& GetColor() const { return m_color; }
 
 private:
-
-	std::string m_assetFilePath;
 
 	Math::Color m_color = kWhiteColor;
 

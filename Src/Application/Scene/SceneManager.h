@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../Utility/SingletonBase.h"
+#include "../Utility/Singleton/SingletonBase.h"
 
 class BaseScene;
 

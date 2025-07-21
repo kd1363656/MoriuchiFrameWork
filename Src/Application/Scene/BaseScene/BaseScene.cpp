@@ -2,9 +2,9 @@
 
 #include "../../GameObject/GameObject.h"
 
-#include "../../Component/Render/StaticModelComponent/StaticModelComponent.h"
+#include "../../Component/Render/3D/StaticModelComponent/StaticModelComponent.h"
 
-#include "../../Component/Render/RenderComponent.h"
+#include "../../Component/Render/3D/Render3DComponent.h"
 
 void BaseScene::PreUpdate()
 {
@@ -63,11 +63,11 @@ void BaseScene::Draw()
 	// 光を遮るオブジェクト(不透明な物体や2Dキャラ)はBeginとEndの間にまとめてDrawする
 	KdShaderManager::Instance().m_StandardShader.BeginGenerateDepthMapFromLight();
 	{
-		for (auto& obj : m_gameObjectList)
+		for (const auto& obj : m_gameObjectList)
 		{
 			if(auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(RenderComponent::DrawType::GenerateDepthFromMapLight);
+				render_->Draw(Render3DComponent::DrawType::GenerateDepthFromMapLight);
 			}
 		}
 	}
@@ -77,11 +77,11 @@ void BaseScene::Draw()
 	// 陰影のないオブジェクト(背景など)はBeginとEndの間にまとめてDrawする
 	KdShaderManager::Instance().m_StandardShader.BeginUnLit();
 	{
-		for (auto& obj : m_gameObjectList)
+		for (const auto& obj : m_gameObjectList)
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(RenderComponent::DrawType::UnLit);
+				render_->Draw(Render3DComponent::DrawType::UnLit);
 			}
 		}
 	}
@@ -91,11 +91,11 @@ void BaseScene::Draw()
 	// 陰影のあるオブジェクト(不透明な物体や2Dキャラ)はBeginとEndの間にまとめてDrawする
 	KdShaderManager::Instance().m_StandardShader.BeginLit();
 	{
-		for (auto& obj : m_gameObjectList)
+		for (const auto& obj : m_gameObjectList)
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(RenderComponent::DrawType::Lit);
+				render_->Draw(Render3DComponent::DrawType::Lit);
 			}
 		}
 	}
@@ -105,11 +105,11 @@ void BaseScene::Draw()
 	// 陰影のないオブジェクト(エフェクトなど)はBeginとEndの間にまとめてDrawする
 	KdShaderManager::Instance().m_StandardShader.BeginUnLit();
 	{
-		for (auto& obj : m_gameObjectList)
+		for (const auto& obj : m_gameObjectList)
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(RenderComponent::DrawType::Effect);
+				render_->Draw(Render3DComponent::DrawType::Effect);
 			}
 		}
 	}
@@ -119,11 +119,11 @@ void BaseScene::Draw()
 	// 光源オブジェクト(自ら光るオブジェクトやエフェクト)はBeginとEndの間にまとめてDrawする
 	KdShaderManager::Instance().m_postProcessShader.BeginBright();
 	{
-		for (auto& obj : m_gameObjectList)
+		for (const auto& obj : m_gameObjectList)
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(RenderComponent::DrawType::Bright);
+				render_->Draw(Render3DComponent::DrawType::Bright);
 			}
 		}
 	}
@@ -136,10 +136,7 @@ void BaseScene::DrawSprite()
 	// 2Dの描画はこの間で行う
 	KdShaderManager::Instance().m_spriteShader.Begin();
 	{
-		for (auto& obj : m_gameObjectList)
-		{
-			//obj->DrawSprite();
-		}
+
 	}
 	KdShaderManager::Instance().m_spriteShader.End();
 }

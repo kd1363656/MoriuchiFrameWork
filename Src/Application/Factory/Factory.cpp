@@ -36,11 +36,9 @@ void Factory::AttachComponent(std::weak_ptr<GameObject> GameObject, std::string_
 	}
 }
 
-void Factory::CreateGameObject() const
+std::shared_ptr<GameObject> Factory::CreateGameObject() const
 {
-	auto gameObject_ = std::make_shared<GameObject>();
-
-	SceneManager::GetInstance().AddGameObject(gameObject_);
+	return std::make_shared<GameObject>();
 }
 
 void Factory::RegisterComponentFactoryMethod()

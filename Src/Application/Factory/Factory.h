@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "../Utility/SingletonBase.h"
+#include "../Utility/Singleton/SingletonBase.h"
 #include "../Utility/String/StringUtility.h"
 #include "../Utility/Common/CommonStruct.h"
 
@@ -41,7 +41,7 @@ public:
 
 	void AttachComponent(std::weak_ptr<GameObject> GameObject , std::string_view WantAttachComponent);
 
-	void CreateGameObject() const;
+	std::shared_ptr<GameObject> CreateGameObject() const;
 
 private:
 

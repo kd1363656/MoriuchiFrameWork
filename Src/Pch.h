@@ -47,6 +47,7 @@
 #include <mutex>
 #include <future>
 #include <fileSystem>
+#include <variant>
 
 //===============================================
 //

@@ -274,12 +274,12 @@
     <ClInclude Include="..\Library\tinygltf\stb_image_write.h" />
     <ClInclude Include="..\Library\tinygltf\tiny_gltf.h" />
     <ClInclude Include="Src\Application\Component\ComponentBase.h" />
-    <ClInclude Include="Src\Application\Component\Render\RenderComponent.h" />
-    <ClInclude Include="Src\Application\Component\Render\StaticModelComponent\StaticModelComponent.h" />
+    <ClInclude Include="Src\Application\Component\Render\3D\AnimationModelComponent\AnimationModelComponent.h" />
+    <ClInclude Include="Src\Application\Component\Render\3D\Render3DComponent.h" />
+    <ClInclude Include="Src\Application\Component\Render\3D\StaticModelComponent\StaticModelComponent.h" />
     <ClInclude Include="Src\Application\Component\Transform\3D\Transform3DComponent.h" />
     <ClInclude Include="Src\Application\Factory\Factory.h" />
     <ClInclude Include="Src\Application\GameObject\Camera\CameraBase.h" />
-    <ClInclude Include="Src\Application\GameObject\Camera\FPSCamera\FPSCamera.h" />
     <ClInclude Include="Src\Application\GameObject\Camera\TPSCamera\TPSCamera.h" />
     <ClInclude Include="Src\Application\GameObject\GameObject.h" />
     <ClInclude Include="Src\Application\main.h" />
@@ -290,8 +290,9 @@
     <ClInclude Include="Src\Application\Utility\BitShift\BitShiftUtility.h" />
     <ClInclude Include="Src\Application\Utility\Common\CommonConstant.h" />
     <ClInclude Include="Src\Application\Utility\Common\CommonStruct.h" />
+    <ClInclude Include="Src\Application\Utility\ImGui\ImGuiUtility.h" />
     <ClInclude Include="Src\Application\Utility\Json\JsonUtility.h" />
-    <ClInclude Include="Src\Application\Utility\SingletonBase.h" />
+    <ClInclude Include="Src\Application\Utility\Singleton\SingletonBase.h" />
     <ClInclude Include="Src\Application\Utility\String\StringUtility.h" />
     <ClInclude Include="Src\Framework\Direct3D\KdMaterial.h" />
     <ClInclude Include="Src\Framework\Direct3D\Polygon\KdPolygon.h" />
@@ -331,6 +332,7 @@
     <ClInclude Include="src\Framework\Utility\KdUtility.h" />
     <ClInclude Include="src\Framework\Window\KdWindow.h" />
     <ClInclude Include="Src\System\Calculation\Calculation.h" />
+    <ClInclude Include="Src\System\ImGui\ImGuiManager.h" />
     <ClInclude Include="Src\System\Input\RawInputManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -342,12 +344,12 @@
     <ClCompile Include="..\Library\imgui\imgui_stdlib.cpp" />
     <ClCompile Include="..\Library\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\Library\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="Src\Application\Component\Render\RenderComponent.cpp" />
-    <ClCompile Include="Src\Application\Component\Render\StaticModelComponent\StaticModelComponent.cpp" />
+    <ClCompile Include="Src\Application\Component\Render\3D\AnimationModelComponent\AnimationModelComponent.cpp" />
+    <ClCompile Include="Src\Application\Component\Render\3D\Render3DComponent.cpp" />
+    <ClCompile Include="Src\Application\Component\Render\3D\StaticModelComponent\StaticModelComponent.cpp" />
     <ClCompile Include="Src\Application\Component\Transform\3D\Transform3DComponent.cpp" />
     <ClCompile Include="Src\Application\Factory\Factory.cpp" />
     <ClCompile Include="Src\Application\GameObject\Camera\CameraBase.cpp" />
-    <ClCompile Include="Src\Application\GameObject\Camera\FPSCamera\FPSCamera.cpp" />
     <ClCompile Include="Src\Application\GameObject\Camera\TPSCamera\TPSCamera.cpp" />
     <ClCompile Include="Src\Application\GameObject\GameObject.cpp" />
     <ClCompile Include="Src\Application\main.cpp" />
@@ -355,6 +357,7 @@
     <ClCompile Include="Src\Application\Scene\GameScene\GameScene.cpp" />
     <ClCompile Include="Src\Application\Scene\SceneManager.cpp" />
     <ClCompile Include="Src\Application\Scene\TitleScene\TitleScene.cpp" />
+    <ClCompile Include="Src\Application\Utility\ImGui\ImGuiUtility.cpp" />
     <ClCompile Include="Src\Framework\Direct3D\KdMaterial.cpp">
       <SubType>
       </SubType>
@@ -397,6 +400,7 @@
     <ClCompile Include="Src\Framework\Shader\SpriteShader\KdSpriteShader.cpp" />
     <ClCompile Include="Src\Framework\Utility\KdUtility.cpp" />
     <ClCompile Include="src\Framework\Window\KdWindow.cpp" />
+    <ClCompile Include="Src\System\ImGui\ImGuiManager.cpp" />
     <ClCompile Include="Src\System\Input\RawInputManager.cpp" />
   </ItemGroup>
   <ItemGroup>

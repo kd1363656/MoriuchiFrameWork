@@ -13,10 +13,10 @@ public:
 
 	void PreUpdate() override;
 
+	void ImGuiComponentViewer() override;
+	
 	void           Deserialize(const nlohmann::json& Json) override; 
 	nlohmann::json Serialize  ()                           override;
-	
-	void ImGuiComponentViewer() override;
 	
 	const Math::Matrix& GetMatrix() const { return m_matrix; }
 

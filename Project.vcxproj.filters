@@ -70,9 +70,6 @@
     <Filter Include="Src\Application\GameObject\Camera\TPSCamera">
       <UniqueIdentifier>{5245e095-1870-4dc4-955f-3b7ccbd2ddaa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\GameObject\Camera\FPSCamera">
-      <UniqueIdentifier>{d0d23d7d-5e27-4301-b41e-72bedc1202bc}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Scene">
       <UniqueIdentifier>{4d2ab234-f9f8-4d65-8770-a559283a7cb6}</UniqueIdentifier>
     </Filter>
@@ -103,9 +100,6 @@
     <Filter Include="Src\Application\Component\Transform\3D">
       <UniqueIdentifier>{f009a3e3-82dc-4b3e-8242-667e192ba1ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Component\Transform\2D">
-      <UniqueIdentifier>{9bf5769d-7073-44ee-8dba-f56e056433a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\System\Calculation">
       <UniqueIdentifier>{fd91d208-c5d3-4d37-9951-bbbd7e3cea12}</UniqueIdentifier>
     </Filter>
@@ -124,11 +118,26 @@
     <Filter Include="Src\Application\Utility\BitShift">
       <UniqueIdentifier>{00d05c4e-ef14-4843-afa1-e3be8e532651}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\Application\Component\Render\StaticModelComponent">
-      <UniqueIdentifier>{d0e83211-a4f9-413c-98d7-5aed7f9d919d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Src\Application\Utility\Json">
       <UniqueIdentifier>{909d64c1-f01d-4a5e-bdd4-b50a5b73a46a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Render\3D">
+      <UniqueIdentifier>{100ebc3d-9225-4a75-bea6-d5b77cb646c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Render\3D\StaticModelComponent">
+      <UniqueIdentifier>{265c5916-0dbd-429d-a8ce-8da1f273a746}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Utility\ImGui">
+      <UniqueIdentifier>{00f109a7-5347-4149-bcda-3e83620e996f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Component\Render\3D\AnimationModelComponent">
+      <UniqueIdentifier>{d7458ab7-3e8b-4c02-abfe-8bd4604c6727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\System\ImGui">
+      <UniqueIdentifier>{f9ea7034-9952-4ce9-be36-2e34ab22def7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Application\Utility\Singleton">
+      <UniqueIdentifier>{2d82b67c-2d92-473f-9001-5ba273359e4e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -294,9 +303,6 @@
     <ClInclude Include="Src\Application\GameObject\Camera\TPSCamera\TPSCamera.h">
       <Filter>Src\Application\GameObject\Camera\TPSCamera</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\GameObject\Camera\FPSCamera\FPSCamera.h">
-      <Filter>Src\Application\GameObject\Camera\FPSCamera</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Scene\SceneManager.h">
       <Filter>Src\Application\Scene</Filter>
     </ClInclude>
@@ -314,9 +320,6 @@
     </ClInclude>
     <ClInclude Include="Src\System\Input\RawInputManager.h">
       <Filter>Src\System\Input</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Application\Utility\SingletonBase.h">
-      <Filter>Src\Application\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Component\ComponentBase.h">
       <Filter>Src\Application\Component</Filter>
@@ -342,17 +345,29 @@
     <ClInclude Include="Src\Application\Utility\Common\CommonStruct.h">
       <Filter>Src\Application\Utility\Common</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Component\Render\RenderComponent.h">
-      <Filter>Src\Application\Component\Render</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Utility\BitShift\BitShiftUtility.h">
       <Filter>Src\Application\Utility\BitShift</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Component\Render\StaticModelComponent\StaticModelComponent.h">
-      <Filter>Src\Application\Component\Render\StaticModelComponent</Filter>
-    </ClInclude>
     <ClInclude Include="Src\Application\Utility\Json\JsonUtility.h">
       <Filter>Src\Application\Utility\Json</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Component\Render\3D\StaticModelComponent\StaticModelComponent.h">
+      <Filter>Src\Application\Component\Render\3D\StaticModelComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Component\Render\3D\Render3DComponent.h">
+      <Filter>Src\Application\Component\Render\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Utility\ImGui\ImGuiUtility.h">
+      <Filter>Src\Application\Utility\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Component\Render\3D\AnimationModelComponent\AnimationModelComponent.h">
+      <Filter>Src\Application\Component\Render\3D\AnimationModelComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\System\ImGui\ImGuiManager.h">
+      <Filter>Src\System\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Utility\Singleton\SingletonBase.h">
+      <Filter>Src\Application\Utility\Singleton</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -488,9 +503,6 @@
     <ClCompile Include="Src\Application\GameObject\Camera\TPSCamera\TPSCamera.cpp">
       <Filter>Src\Application\GameObject\Camera\TPSCamera</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\GameObject\Camera\FPSCamera\FPSCamera.cpp">
-      <Filter>Src\Application\GameObject\Camera\FPSCamera</Filter>
-    </ClCompile>
     <ClCompile Include="Src\Application\Scene\SceneManager.cpp">
       <Filter>Src\Application\Scene</Filter>
     </ClCompile>
@@ -518,11 +530,20 @@
     <ClCompile Include="Src\Application\Factory\Factory.cpp">
       <Filter>Src\Application\Factory</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Component\Render\RenderComponent.cpp">
-      <Filter>Src\Application\Component\Render</Filter>
+    <ClCompile Include="Src\Application\Component\Render\3D\StaticModelComponent\StaticModelComponent.cpp">
+      <Filter>Src\Application\Component\Render\3D\StaticModelComponent</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Component\Render\StaticModelComponent\StaticModelComponent.cpp">
-      <Filter>Src\Application\Component\Render\StaticModelComponent</Filter>
+    <ClCompile Include="Src\Application\Component\Render\3D\Render3DComponent.cpp">
+      <Filter>Src\Application\Component\Render\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Utility\ImGui\ImGuiUtility.cpp">
+      <Filter>Src\Application\Utility\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\Render\3D\AnimationModelComponent\AnimationModelComponent.cpp">
+      <Filter>Src\Application\Component\Render\3D\AnimationModelComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\System\ImGui\ImGuiManager.cpp">
+      <Filter>Src\System\ImGui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,8 @@
 
 namespace CommonConstant
 {
+	static const char* const ASSET_FOLDER_PATH = "Asset/";
+
 	static constexpr float LERP_EPSILON = 0.0001f;
 
 	static constexpr float DOT_PRODUCT_MIN = -1.0f;

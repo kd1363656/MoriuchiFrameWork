@@ -24,6 +24,21 @@ void Transform3DComponent::PreUpdate()
 	m_matrix = scaleMat_ * rotationMat_ * transMat_;
 }
 
+void Transform3DComponent::ImGuiComponentViewer()
+{
+	Math::Vector3 radian_ = Math::Vector3::Zero;
+
+	// クオータニオンをオイラー角に変換
+	Calculation::QuaternionToEuler(m_rotation, radian_);
+
+	ImGui::DragFloat3("Position", &m_position.x, 0.1f															  );
+	ImGui::DragFloat3("Rotation", &radian_.x   , 1.0f, -CommonConstant::HALF_DEGREE , CommonConstant::HALF_DEGREE );
+	ImGui::DragFloat3("Scale"   , &m_scale.x   , 0.1f														      );
+
+	// 変換したオイラー角の結果をクオータニオンに変換
+	Calculation::EulerToQuaternion(radian_ , m_rotation);
+}
+
 void Transform3DComponent::Deserialize(const nlohmann::json& Json)
 {
 	if(Json.is_null()) { return; }
@@ -41,19 +56,4 @@ nlohmann::json Transform3DComponent::Serialize()
 	json_["Scale"   ] = JsonUtility::Vec3ToJson      (m_scale   );
 	
 	return json_;
-}
-
-void Transform3DComponent::ImGuiComponentViewer()
-{
-	Math::Vector3 radian_ = Math::Vector3::Zero;
-
-	// クオータニオンをオイラー角に変換
-	Calculation::QuaternionToEuler(m_rotation, radian_);
-
-	ImGui::DragFloat3("Position", &m_position.x, 0.1f															  );
-	ImGui::DragFloat3("Rotation", &radian_.x   , 1.0f, -CommonConstant::HALF_DEGREE , CommonConstant::HALF_DEGREE );
-	ImGui::DragFloat3("Scale"   , &m_scale.x   , 0.1f														      );
-
-	// 変換したオイラー角の結果をクオータニオンに変換
-	Calculation::EulerToQuaternion(radian_ , m_rotation);
 }

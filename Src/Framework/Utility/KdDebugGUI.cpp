@@ -2,6 +2,8 @@
 
 #include "KdDebugGUI.h"
 
+#include "../../System/ImGui/ImGuiManager.h"
+
 KdDebugGUI::KdDebugGUI()
 {}
 KdDebugGUI::~KdDebugGUI()
@@ -34,6 +36,8 @@ void KdDebugGUI::GuiInit()
 	io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\msgothic.ttc", 13.0f, &config, glyphRangesJapanese);
 
 	m_uqLog = std::make_unique<ImGuiAppLog>();
+
+	ImGuiManager::GetInstance().Init();
 }
 
 void KdDebugGUI::GuiProcess()
@@ -59,6 +63,8 @@ void KdDebugGUI::GuiProcess()
 //		ImGui::Text("FPS : %d", Application::Instance().GetNowFPS());
 //	}
 //	ImGui::End();
+
+	ImGuiManager::GetInstance().Update();
 
 	// ログウィンドウ
 	m_uqLog->Draw("Log Window");

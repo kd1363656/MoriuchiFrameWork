@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../Src/Application/Utility/SingletonBase.h"
+#include "../Src/Application/Utility/Singleton/SingletonBase.h"
 
 #include <Xinput.h>
 #pragma comment(lib , "xinput.lib")	//XInputライブラリリンク

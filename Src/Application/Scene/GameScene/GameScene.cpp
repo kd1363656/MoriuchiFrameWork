@@ -1,6 +1,10 @@
 ﻿#include "GameScene.h"
 #include"../SceneManager.h"
 
+#include "../../Factory/Factory.h"
+
+#include "../../GameObject/GameObject.h"
+
 void GameScene::Event()
 {
 	if (GetAsyncKeyState('T') & 0x8000)
@@ -14,4 +18,5 @@ void GameScene::Event()
 
 void GameScene::Init()
 {
+
 }
