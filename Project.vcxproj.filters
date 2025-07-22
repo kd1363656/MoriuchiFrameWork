@@ -151,9 +151,6 @@
     <Filter Include="Src\Application\Component\AssetFilePath">
       <UniqueIdentifier>{36b2af24-b5e3-45f7-b2fb-f617186371b8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Src\System\ImGui\Hierarchy">
-      <UniqueIdentifier>{1959ee50-1559-4eb1-86ee-ced4c7a3d9c1}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -393,12 +390,6 @@
     <ClInclude Include="Src\Application\Component\AssetFilePath\AssetFilePathComponent.h">
       <Filter>Src\Application\Component\AssetFilePath</Filter>
     </ClInclude>
-    <ClInclude Include="Src\System\ImGui\ImGuiWindowBase.h">
-      <Filter>Src\System\ImGui</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\System\ImGui\Hierarchy\ImGuiHierarchyWindow.h">
-      <Filter>Src\System\ImGui\Hierarchy</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -583,9 +574,6 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Component\AssetFilePath\AssetFilePathComponent.cpp">
       <Filter>Src\Application\Component\AssetFilePath</Filter>
-    </ClCompile>
-    <ClCompile Include="Src\System\ImGui\Hierarchy\ImGuiHierarchyWindow.cpp">
-      <Filter>Src\System\ImGui\Hierarchy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

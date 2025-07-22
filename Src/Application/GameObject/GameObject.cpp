@@ -1,14 +1,19 @@
 ﻿#include "GameObject.h"
 
+#include "../Utility/String/StringUtility.h"
+
 void GameObject::Init()
 {
-	m_deleteRequested = false;
-
 	for (const auto& [key_ , value_] : m_componentList)
 	{
 		value_->Init();
 		value_->SetOwner(shared_from_this());
 	}
+
+	m_typeName = typeid(*this).name();
+	StringUtility::StripClassPrefix(m_typeName);
+
+	m_deleteRequested = false;
 }
 void GameObject::PostLoadInit() const
 {

@@ -28,8 +28,8 @@ public:
 
 	// コンポーネントを取得
 	template <class ComponentType>
-		requires std::is_base_of_v<ComponentBase , ComponentType>
-	std::weak_ptr<ComponentType> GetComponent()
+		requires std::derived_from<ComponentType , ComponentBase>
+	std::weak_ptr<ComponentType> GetComponent() const
 	{
 		const uint32_t id_ = ComponentID::GetTypeID<ComponentType>();
 	
@@ -42,11 +42,19 @@ public:
 		return std::weak_ptr<ComponentType>();
 	}
 
+	std::unordered_map<uint32_t, std::shared_ptr<ComponentBase>> GetComponentList() const { return m_componentList; }
+
+	std::string_view GetTypeName() const { return m_typeName; };
+
 	bool GetIsDeleteRequested() const { return m_deleteRequested; }
+
+	void SetIsDeleteRequested(bool Set) { m_deleteRequested = Set; }
 
 private:
 
 	std::unordered_map<uint32_t, std::shared_ptr<ComponentBase>> m_componentList;
+
+	std::string m_typeName = "";
 
 	bool m_deleteRequested = false;
 };

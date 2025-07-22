@@ -27,9 +27,9 @@ public:
 	}
 	
 	// オブジェクトリストに追加
-	void AddGameObject(const std::shared_ptr<GameObject> _obj)
+	void AddGameObject(const std::shared_ptr<GameObject> AddGameObject)
 	{
-		m_gameObjectList.push_back(_obj);
+		m_gameObjectList.emplace_back(AddGameObject);
 	}
 
 protected:

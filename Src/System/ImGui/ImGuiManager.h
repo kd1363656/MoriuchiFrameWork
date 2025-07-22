@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "../../Application/Utility/Singleton/SingletonBase.h"
 
+class GameObject;
+
 class ImGuiManager : public SingletonBase<ImGuiManager>
 {
 
@@ -17,6 +19,13 @@ public:
 
 private:
 
+	void UpdateHierarchyWindow    ();
+	void UpdateAddGameObjectButton() const;
+
+	std::weak_ptr<GameObject> m_inspectorWindowTargetGameObject;
+
+	uint32_t m_popUpFlag = 0u;
+
 	// ========================
 	// Singleton
 	// ========================
@@ -25,5 +34,4 @@ private:
 	ImGuiManager ()          = default;
 	~ImGuiManager() override = default;
 
-	uint32_t m_popUpFlag = 0u;
 };

@@ -11,7 +11,7 @@ void AssetFilePathComponent::Init()
 void AssetFilePathComponent::ImGuiComponentViewer(const char* Label)
 {
 	// ファイルパスの変更を受け取る
-	m_hasPathChanged = ImGuiUtility::ImGuiSelectFolderPath(Label , m_assetFilePath);
+	m_hasPathChanged = ImGuiUtility::SelectFolderPath(Label , m_assetFilePath);
 }
 
 void AssetFilePathComponent::LoadPrefabData(const nlohmann::json& Json)

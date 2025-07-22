@@ -44,8 +44,8 @@ void Render3DComponent::ImGuiComponentViewer()
 		{ "Toon"        , static_cast<uint32_t>(ShaderType::Toon)        }
 	};
 
-	ImGuiUtility::ImGuiBitShiftSelector("DrawType"   , m_drawType   , drawTypeList_  );
-	ImGuiUtility::ImGuiBitShiftSelector("ShaderType" , m_shaderType , shaderTypeList_);
+	ImGuiUtility::BitShiftSelector("DrawType"   , m_drawType   , drawTypeList_  );
+	ImGuiUtility::BitShiftSelector("ShaderType" , m_shaderType , shaderTypeList_);
 }
 
 void Render3DComponent::LoadPrefabData(const nlohmann::json& Json)

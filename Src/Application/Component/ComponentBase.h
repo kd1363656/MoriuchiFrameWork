@@ -30,6 +30,8 @@ public:
 	virtual void           LoadPrefabData(const nlohmann::json& Json) { /*　必要に応じてオーバーライドしてください */ }
 	virtual nlohmann::json SavePrefabData()                           { return nlohmann::json();                      }
 
+	std::string_view GetTypeName() const { return m_typeName; }
+
 	bool GetIsDeleteRequested()const { return m_isDeleteRequested; }
 
 	void SetOwner(std::weak_ptr<GameObject> Set) { m_owner = Set; }
