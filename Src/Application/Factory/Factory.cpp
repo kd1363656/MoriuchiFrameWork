@@ -2,7 +2,10 @@
 
 #include "../GameObject/GameObject.h"
 
+#include "../Component/Render/3D/AnimationModelComponent/AnimationModelComponent.h"
+#include "../Component/Render/3D/StaticModelComponent/StaticModelComponent.h"
 #include "../Component/Transform/3D/Transform3DComponent.h"
+#include "../Component/ParentComponent/ParentComponent.h"
 
 #include "../Scene/SceneManager.h"
 
@@ -47,7 +50,10 @@ void Factory::RegisterComponentFactoryMethod()
 	KdDebugGUI::Instance().AddLog("============ Start register gameObject factory ============\n\n");
 #endif // _DEBUG
 
-	RegisterComponentFactoryMethod<Transform3DComponent>();
+	RegisterComponentFactoryMethod<AnimationModelComponent>();
+	RegisterComponentFactoryMethod<StaticModelComponent>   ();
+	RegisterComponentFactoryMethod<Transform3DComponent>   ();
+	RegisterComponentFactoryMethod<ParentComponent>        ();
 
 #ifdef _DEBUG
 	KdDebugGUI::Instance().AddLog("\n============ End register gameObject factory ==============\n\n\n\n");

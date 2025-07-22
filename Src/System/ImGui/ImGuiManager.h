@@ -8,11 +8,6 @@ class ImGuiManager : public SingletonBase<ImGuiManager>
 
 public:
 
-	enum class PopUpFlag
-	{
-		Save = 1 << 0 ,
-	};
-
 	void Init();
 	
 	void Update();
@@ -22,9 +17,14 @@ private:
 	void UpdateHierarchyWindow    ();
 	void UpdateAddGameObjectButton() const;
 
+	void UpdateInspectorWindow     ();
+	void UpdateComponentInspector  (std::shared_ptr<GameObject> GameObject) const;
+	void UpdateAddComponentSelector(std::shared_ptr<GameObject> GameObject);
+	void UpdateAddComponentButton  (std::shared_ptr<GameObject> GameObject) const;
+
 	std::weak_ptr<GameObject> m_inspectorWindowTargetGameObject;
 
-	uint32_t m_popUpFlag = 0u;
+	std::string m_selectedComponentName = "";
 
 	// ========================
 	// Singleton

@@ -45,6 +45,8 @@ public:
 
 	std::shared_ptr<GameObject> CreateGameObject() const;
 
+	auto& GetComponentFactoryMethodList() { return m_componentFactoryMethodList; }
+
 private:
 
 	void RegisterComponentFactoryMethod();
