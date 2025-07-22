@@ -335,7 +335,9 @@
     <ClInclude Include="src\Framework\Utility\KdUtility.h" />
     <ClInclude Include="src\Framework\Window\KdWindow.h" />
     <ClInclude Include="Src\System\Calculation\Calculation.h" />
+    <ClInclude Include="Src\System\ImGui\Hierarchy\ImGuiHierarchyWindow.h" />
     <ClInclude Include="Src\System\ImGui\ImGuiManager.h" />
+    <ClInclude Include="Src\System\ImGui\ImGuiWindowBase.h" />
     <ClInclude Include="Src\System\Input\RawInputManager.h" />
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +408,7 @@
     <ClCompile Include="Src\Framework\Shader\SpriteShader\KdSpriteShader.cpp" />
     <ClCompile Include="Src\Framework\Utility\KdUtility.cpp" />
     <ClCompile Include="src\Framework\Window\KdWindow.cpp" />
+    <ClCompile Include="Src\System\ImGui\Hierarchy\ImGuiHierarchyWindow.cpp" />
     <ClCompile Include="Src\System\ImGui\ImGuiManager.cpp" />
     <ClCompile Include="Src\System\Input\RawInputManager.cpp" />
   </ItemGroup>
