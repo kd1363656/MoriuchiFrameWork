@@ -23,8 +23,10 @@ public:
 	void Init();
 
 	// "KdGameObject"の派生クラスの名前をキーとしてインスタンスを生成する
+	// "std::derived_from"を使っているのは基底クラスに仮想関数があり基底クラスが
+	// インスタンス化できないため"std::is_base_of"を使う必要性がないから
 	template <class ComponentType>
-		requires std::is_base_of_v<ComponentBase , ComponentType>
+		requires std::derived_from<ComponentType, ComponentBase>
 	void RegisterComponentFactoryMethod()
 	{
 		// コンポーネント名を取得

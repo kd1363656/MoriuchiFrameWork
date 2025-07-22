@@ -34,7 +34,7 @@ void CameraComponent::FixMatrix()
 	m_matrix = transMat_ * rotationMat_;
 
 	// もし親行列がいるなら合成する
-	if (auto owner_ = GetOwner().lock())
+	if (auto owner_ = GetOwner())
 	{
 		if (auto parentComponent_ = owner_->GetComponent<ParentComponent>().lock())
 		{

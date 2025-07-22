@@ -28,9 +28,11 @@ void ImGuiUtility::ImGuiBitShiftSelector(const char* Label, uint32_t& Flag, cons
 	ImGui::PopID();
 }
 
-bool ImGuiUtility::ImGuiSelectFolderPath(std::string& FolderPath)
+bool ImGuiUtility::ImGuiSelectFolderPath(const char* Label, std::string& FolderPath)
 {
-	if (ImGui::Button(("FilePath : %s", FolderPath.c_str())))
+	std::string label_ = std::format("{} : {}" , Label , FolderPath);
+
+	if (ImGui::Button((label_.c_str())))
 	{
 		std::string defPath_ = CommonConstant::ASSET_FOLDER_PATH;
 

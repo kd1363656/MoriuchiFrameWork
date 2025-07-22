@@ -16,7 +16,8 @@ void Transform3DComponent::Init()
 
 void Transform3DComponent::PreUpdate()
 {
-	// 座標の確定は"Update,PostUpdate"で座標、回転の更新が行われてから更新
+	// 座標の確定は"Update,PostUpdate"で座標、回転の更新が行われてから
+	// 更新するため"PreUpdate"で更新
 	const Math::Matrix transMat_    = Math::Matrix::CreateTranslation   (m_position);
 	const Math::Matrix rotationMat_ = Math::Matrix::CreateFromQuaternion(m_rotation);
 	const Math::Matrix scaleMat_    = Math::Matrix::CreateScale         (m_scale   );

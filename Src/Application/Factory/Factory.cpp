@@ -24,7 +24,7 @@ void Factory::AttachComponent(std::weak_ptr<GameObject> GameObject, std::string_
 	auto component_ = itr_->second();
 	// コンポーネントの所持者、名前を設定
 	component_->SetOwner   (GameObject);
-	component_->SetTypeName(WantAttachComponent);
+	component_->SetTypeName(itr_->first);
 
 	if (auto gameObject_ = GameObject.lock())
 	{

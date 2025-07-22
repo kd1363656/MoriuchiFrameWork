@@ -148,6 +148,9 @@
     <Filter Include="Src\Application\Component\Parent">
       <UniqueIdentifier>{f72096e1-9a0c-46ab-85b1-a0ab0784581c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Component\AssetFilePath">
+      <UniqueIdentifier>{36b2af24-b5e3-45f7-b2fb-f617186371b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -384,6 +387,9 @@
     <ClInclude Include="Src\Application\Component\ParentComponent\ParentComponent.h">
       <Filter>Src\Application\Component\Parent</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Component\AssetFilePath\AssetFilePathComponent.h">
+      <Filter>Src\Application\Component\AssetFilePath</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -565,6 +571,9 @@
     </ClCompile>
     <ClCompile Include="Src\Application\Component\ParentComponent\ParentComponent.cpp">
       <Filter>Src\Application\Component\Parent</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\AssetFilePath\AssetFilePathComponent.cpp">
+      <Filter>Src\Application\Component\AssetFilePath</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

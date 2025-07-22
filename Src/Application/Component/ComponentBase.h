@@ -2,6 +2,8 @@
 
 class GameObject;
 
+// 初期化でコンポーネントの名前を共通して"Init"で初期化してもよいが"RTTI"を極力使わないために
+// "Factor"の方でコンポーネントの名前を取得している
 class ComponentBase : public std::enable_shared_from_this<ComponentBase>
 {
 
@@ -28,17 +30,15 @@ public:
 	virtual void           LoadPrefabData(const nlohmann::json& Json) { /*　必要に応じてオーバーライドしてください */ }
 	virtual nlohmann::json SavePrefabData()                           { return nlohmann::json();                      }
 
-	std::string_view GetTypeName() const { return m_typeName; }
-
 	bool GetIsDeleteRequested()const { return m_isDeleteRequested; }
 
 	void SetOwner(std::weak_ptr<GameObject> Set) { m_owner = Set; }
 
-	void SetTypeName(const std::string_view Set) { m_typeName = Set; }
+	void SetTypeName(const std::string& TypeName) { m_typeName = TypeName; }
 
 protected:
 
-	std::weak_ptr<GameObject> GetOwner()const { return m_owner; }
+	std::shared_ptr<GameObject> GetOwner()const { return m_owner.lock(); }
 
 private:
 
@@ -47,6 +47,7 @@ private:
 	std::string m_typeName = "";
 
 	bool m_isDeleteRequested = false;
+
 };
 
 class ComponentID
@@ -55,6 +56,7 @@ class ComponentID
 public:
 
 	template <class ComponentType>
+		requires std::derived_from<ComponentType, ComponentBase>
 	static inline uint32_t GetTypeID()
 	{
 		static uint32_t id_ = GenerateTypeID();

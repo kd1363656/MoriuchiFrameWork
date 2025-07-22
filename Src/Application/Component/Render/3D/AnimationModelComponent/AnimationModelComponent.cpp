@@ -6,21 +6,23 @@
 #include "../../../../Utility/ImGui/ImGuiUtility.h"
 #include "../../../../Utility/BitShift/BitShiftUtility.h"
 
+void AnimationModelComponent::Init()
+{
+	m_modelData = nullptr;
+
+	m_renderComponent.Init       ();
+	m_assetFilePathComponent.Init();
+}
 void AnimationModelComponent::PostLoadInit()
 {
-	m_renderComponent.PostLoadInit();
-
-	// もし"Json"データを読み込んだ際にファイルパスが何も読み込まれていなければ"return"
-	if (m_assetFilePath.empty())
-	{
-		return;
-	}
-
-	if(!m_modelData)
+	// "Json"が読み込まれた際にアセットのファイルパスが設定されていれば実行
+	if(!m_modelData && !m_assetFilePathComponent.GetAssetFilePath().empty())
 	{
 		m_modelData = std::make_shared<KdModelWork>();
-		m_modelData->SetModelData(m_assetFilePath);
+		m_modelData->SetModelData(m_assetFilePathComponent.GetAssetFilePath());
 	}
+
+	m_renderComponent.PostLoadInit();
 }
 
 void AnimationModelComponent::Draw(const Render3DComponent::DrawType DrawType) const
@@ -31,7 +33,7 @@ void AnimationModelComponent::Draw(const Render3DComponent::DrawType DrawType) c
 		return;
 	}
 
-	if (auto transform3DComponent_ = m_renderComponent.GetTransform3DComponent().lock())
+	if (auto transform3DComponent_ = m_renderComponent.GetTransform3DComponent())
 	{
 		KdShaderManager::Instance().m_StandardShader.DrawModel(*m_modelData, transform3DComponent_->GetMatrix(), m_renderComponent.GetColor());
 	}
@@ -43,7 +45,7 @@ void AnimationModelComponent::Draw(const Render3DComponent::ShaderType ShaderTyp
 		return;
 	}
 
-	if (auto transform3DComponent_ = m_renderComponent.GetTransform3DComponent().lock())
+	if (auto transform3DComponent_ = m_renderComponent.GetTransform3DComponent())
 	{
 		KdShaderManager::Instance().m_StandardShader.DrawModel(*m_modelData, transform3DComponent_->GetMatrix(), m_renderComponent.GetColor());
 	}
@@ -53,32 +55,31 @@ void AnimationModelComponent::LoadPrefabData(const nlohmann::json& Json)
 {
 	if (Json.is_null()) { return; }
 
-	m_assetFilePath = Json.value("AssetFilePath", "");
-
-	if (Json.contains("Render3DComponent")) { m_renderComponent.LoadPrefabData(Json["Render3DComponent"]); }
+	if (Json.contains("Render3DComponent"     )) { m_renderComponent.LoadPrefabData       (Json["Render3DComponent"     ]); }
+	if (Json.contains("AssetFilePathComponent")) { m_assetFilePathComponent.LoadPrefabData(Json["AssetFilePathComponent"]); }
 }
 nlohmann::json AnimationModelComponent::SavePrefabData()
 {
 	auto json_ = nlohmann::json();
 
-	json_["AssetFilePath"    ] = m_assetFilePath;
-	json_["Render3DComponent"] = m_renderComponent.SavePrefabData();
+	json_["Render3DComponent"     ] = m_renderComponent.SavePrefabData       ();
+	json_["AssetFilePathComponent"] = m_assetFilePathComponent.SavePrefabData();
 
 	return json_;
 }
 
 void AnimationModelComponent::ImGuiComponentViewer()
 {
-	if (ImGuiUtility::ImGuiSelectFolderPath(m_assetFilePath))
+	m_renderComponent.ImGuiComponentViewer       ();
+	m_assetFilePathComponent.ImGuiComponentViewer("AnimationModelFilePath");
+
+	if(m_assetFilePathComponent.GetHasPathChanged())
 	{
-		// フライトウェイトからモデルデータを取得
 		if (!m_modelData)
 		{
 			m_modelData = std::make_shared<KdModelWork>();
 		}
 
-		m_modelData->SetModelData(m_assetFilePath);
+		m_modelData->SetModelData(m_assetFilePathComponent.GetAssetFilePath());
 	}
-
-	m_renderComponent.ImGuiComponentViewer();
 }

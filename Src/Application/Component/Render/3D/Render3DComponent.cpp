@@ -8,9 +8,16 @@
 #include "../../../Utility/ImGui/ImGuiUtility.h"
 #include "../../../Utility/Json/JsonUtility.h"
 
+void Render3DComponent::Init()
+{
+	m_color = kWhiteColor;
+
+	m_drawType   = 0u;
+	m_shaderType = 0u;
+}
 void Render3DComponent::PostLoadInit()
 {
-	auto owner_ = GetOwner().lock();
+	auto owner_ = GetOwner();
 
 	if (owner_)
 	{

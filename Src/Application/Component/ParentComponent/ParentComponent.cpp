@@ -6,7 +6,7 @@
 
 void ParentComponent::PostLoadInit()
 {
-	auto owner_ = GetOwner().lock();
+	auto owner_ = GetOwner();
 
 	if (owner_)
 	{

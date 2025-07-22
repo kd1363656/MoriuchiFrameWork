@@ -273,6 +273,7 @@
     <ClInclude Include="..\Library\tinygltf\stb_image.h" />
     <ClInclude Include="..\Library\tinygltf\stb_image_write.h" />
     <ClInclude Include="..\Library\tinygltf\tiny_gltf.h" />
+    <ClInclude Include="Src\Application\Component\AssetFilePath\AssetFilePathComponent.h" />
     <ClInclude Include="Src\Application\Component\ComponentBase.h" />
     <ClInclude Include="Src\Application\Component\ParentComponent\ParentComponent.h" />
     <ClInclude Include="Src\Application\Component\Render\3D\AnimationModelComponent\AnimationModelComponent.h" />
@@ -346,6 +347,7 @@
     <ClCompile Include="..\Library\imgui\imgui_stdlib.cpp" />
     <ClCompile Include="..\Library\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\Library\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Src\Application\Component\AssetFilePath\AssetFilePathComponent.cpp" />
     <ClCompile Include="Src\Application\Component\ParentComponent\ParentComponent.cpp" />
     <ClCompile Include="Src\Application\Component\Render\3D\AnimationModelComponent\AnimationModelComponent.cpp" />
     <ClCompile Include="Src\Application\Component\Render\3D\Render3DComponent.cpp" />

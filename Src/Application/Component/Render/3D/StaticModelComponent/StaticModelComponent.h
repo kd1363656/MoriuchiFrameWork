@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "../Render3DComponent.h"
+#include "../../../AssetFilePath/AssetFilePathComponent.h"
 
 class StaticModelComponent : public ComponentBase
 {
@@ -11,6 +12,7 @@ public:
 
 	uint32_t GetTypeID() const override { return ComponentID::GetTypeID<StaticModelComponent>(); }
 
+	void Init        ()override;
 	void PostLoadInit() override;
 
 	void Draw(const Render3DComponent::DrawType   DrawType  ) const;
@@ -25,7 +27,6 @@ private:
 
 	std::shared_ptr<KdModelData> m_modelData = nullptr;
 
-	std::string m_assetFilePath = "";
-
-	Render3DComponent m_renderComponent;
+	Render3DComponent      m_renderComponent;
+	AssetFilePathComponent m_assetFilePathComponent;
 };

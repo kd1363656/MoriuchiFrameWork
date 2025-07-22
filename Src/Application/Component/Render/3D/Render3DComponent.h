@@ -2,6 +2,7 @@
 
 class Transform3DComponent;
 
+// どのように描画、シェーダーを適用するかを決めるコンポーネント
 class Render3DComponent : public ComponentBase
 {
 
@@ -26,6 +27,7 @@ public:
 	Render3DComponent ()          = default;
 	~Render3DComponent() override = default;
 
+	void Init        () override;
 	void PostLoadInit() override;
 
 	void ImGuiComponentViewer() override;
@@ -35,20 +37,20 @@ public:
 	
 	uint32_t GetTypeID() const override { return ComponentID::GetTypeID<Render3DComponent>(); }
 
-	uint32_t GetDrawType  () const { return m_drawType;   }
-	uint32_t GetShaderType() const { return m_shaderType; }
-
-	std::weak_ptr<Transform3DComponent> GetTransform3DComponent() const { return m_transform3DComponent; }
+	std::shared_ptr<Transform3DComponent> GetTransform3DComponent() const { return m_transform3DComponent.lock(); }
 
 	const Math::Color& GetColor() const { return m_color; }
 
+	uint32_t GetDrawType  () const { return m_drawType;   }
+	uint32_t GetShaderType() const { return m_shaderType; }
+
 private:
+
+	std::weak_ptr<Transform3DComponent> m_transform3DComponent;
 
 	Math::Color m_color = kWhiteColor;
 
 	uint32_t m_drawType   = 0u;
 	uint32_t m_shaderType = 0u;
-
-	std::weak_ptr<Transform3DComponent> m_transform3DComponent;
 
 };
