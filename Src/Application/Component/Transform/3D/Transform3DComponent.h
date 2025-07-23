@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class Transform3DComponent : public ComponentBase
+class Transform3DComponent : public Component::OwnedBase
 {
 public:
 

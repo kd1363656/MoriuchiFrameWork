@@ -1,16 +1,15 @@
 ﻿#pragma once
+#include "Component.h"
 
-class GameObject;
-
-// 初期化でコンポーネントの名前を共通して"Init"で初期化してもよいが"RTTI"を極力使わないために
-// "Factor"の方でコンポーネントの名前を取得している
-class ComponentBase : public std::enable_shared_from_this<ComponentBase>
+// ゲームオブジェクトに持たせることを想定したコンポーネントの基底クラス
+// ゲームオブジェクト直下のコンポーネントにのみゲームオブジェクトへのアクセスを許すことで
+// 共通する処理を持つコンポーネントへの必要なコンポーネントのセットを"PrimaryBase"のみで行うことができ保守性が高くなる
+class Component::OwnedBase
 {
-
 public:
 
-	ComponentBase         () = default;
-	virtual ~ComponentBase() = default;
+	OwnedBase         () = default;
+	virtual ~OwnedBase() = default;
 
 	virtual uint32_t GetTypeID() const = 0;
 
@@ -22,7 +21,7 @@ public:
 	virtual void Update    () { /*　必要に応じてオーバーライドしてください */ }
 	virtual void PostUpdate() { /*　必要に応じてオーバーライドしてください */ }
 
-	virtual void ImGuiComponentViewer() = 0;
+	virtual void ImGuiComponentViewer() { /*　必要に応じてオーバーライドしてください */ }
 
 	virtual void           Deserialize(const nlohmann::json& Json) { /*　必要に応じてオーバーライドしてください */ }
 	virtual nlohmann::json Serialize  ()                           { return nlohmann::json();					   }
@@ -38,16 +37,19 @@ public:
 
 	void SetTypeName(const std::string& TypeName) { m_typeName = TypeName; }
 
+	void SetIsDeleteRequested(bool Set) { m_isDeleteRequested = Set; }
+
+
 protected:
-
+	
 	std::shared_ptr<GameObject> GetOwner()const { return m_owner.lock(); }
-
+	
 private:
-
+	
 	std::weak_ptr<GameObject> m_owner;
-
+	
 	std::string m_typeName = "";
-
+	
 	bool m_isDeleteRequested = false;
 
 };
@@ -58,7 +60,7 @@ class ComponentID
 public:
 
 	template <class ComponentType>
-		requires std::derived_from<ComponentType, ComponentBase>
+		requires std::derived_from<ComponentType, Component::OwnedBase>
 	static inline uint32_t GetTypeID()
 	{
 		static uint32_t id_ = GenerateTypeID();

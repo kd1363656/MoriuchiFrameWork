@@ -1,14 +1,15 @@
 ﻿#pragma once
 
 // カメラは固有の処理が多いので一つのコンポーネントにまとめる
-class CameraComponent : public ComponentBase
+// 再利用性の高い処理のみを書いてき、細かな処理は固有コンポーネントで書き込む
+class CameraCommonComponent : public Component::OwnedBase
 {
 public:
 
-	CameraComponent ()          = default;
-	~CameraComponent() override = default;
+	CameraCommonComponent ()          = default;
+	~CameraCommonComponent() override = default;
 
-	uint32_t GetTypeID() const override { return ComponentID::GetTypeID<CameraComponent>(); }
+	uint32_t GetTypeID() const override { return ComponentID::GetTypeID<CameraCommonComponent>(); }
 
 	void Init() override;
 	

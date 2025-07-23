@@ -26,7 +26,7 @@ public:
 	// "std::derived_from"を使っているのは基底クラスに仮想関数があり基底クラスが
 	// インスタンス化できないため"std::is_base_of"を使う必要性がないから
 	template <class ComponentType>
-		requires std::derived_from<ComponentType, ComponentBase>
+		requires std::derived_from<ComponentType, Component::OwnedBase>
 	void RegisterComponentFactoryMethod()
 	{
 		// コンポーネント名を取得
@@ -51,7 +51,7 @@ private:
 
 	void RegisterComponentFactoryMethod();
 
-	std::unordered_map <std::string, std::function<std::shared_ptr<ComponentBase>()> , StringHash , std::equal_to<>> m_componentFactoryMethodList;
+	std::unordered_map <std::string, std::function<std::shared_ptr<Component::OwnedBase>()> , StringHash , std::equal_to<>> m_componentFactoryMethodList;
 
 	// =============================
 	// "Singleton"

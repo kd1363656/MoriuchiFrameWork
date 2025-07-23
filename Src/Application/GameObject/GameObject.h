@@ -17,9 +17,9 @@ public:
 	void DeleteRequestedComponent();
 
 	// 存在しないコンポーネントのみを追加
-	void AddComponent(std::shared_ptr<ComponentBase> WantAdd)
+	void AddComponent(std::shared_ptr<Component::OwnedBase> WantAdd)
 	{
-		const uint32_t id_ = ComponentID::GetTypeID<ComponentBase>();
+		const uint32_t id_ = WantAdd->GetTypeID();
 
 		WantAdd->Init();
 
@@ -28,7 +28,7 @@ public:
 
 	// コンポーネントを取得
 	template <class ComponentType>
-		requires std::derived_from<ComponentType , ComponentBase>
+		requires std::derived_from<ComponentType , Component::OwnedBase>
 	std::weak_ptr<ComponentType> GetComponent() const
 	{
 		const uint32_t id_ = ComponentID::GetTypeID<ComponentType>();
@@ -42,7 +42,7 @@ public:
 		return std::weak_ptr<ComponentType>();
 	}
 
-	const std::unordered_map<uint32_t, std::shared_ptr<ComponentBase>>& GetComponentList() const { return m_componentList; }
+	const std::unordered_map<uint32_t, std::shared_ptr<Component::OwnedBase>>& GetComponentList() const { return m_componentList; }
 
 	std::string_view GetTypeName() const { return m_typeName; };
 
@@ -52,7 +52,7 @@ public:
 
 private:
 
-	std::unordered_map<uint32_t, std::shared_ptr<ComponentBase>> m_componentList;
+	std::unordered_map<uint32_t, std::shared_ptr<Component::OwnedBase>> m_componentList;
 
 	std::string m_typeName = "";
 

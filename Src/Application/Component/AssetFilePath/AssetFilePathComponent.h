@@ -1,14 +1,12 @@
 ﻿#pragma once
 
 // アセットへのファイルパスを選択するためのコンポーネント
-class AssetFilePathComponent : public ComponentBase
+class AssetFilePathComponent : public Component::CommonBehaviorBase
 {
 public:
 
 	AssetFilePathComponent ()          = default;
 	~AssetFilePathComponent() override = default;
-
-	uint32_t GetTypeID() const override { return ComponentID::GetTypeID<AssetFilePathComponent>(); }
 
 	void Init() override;
 

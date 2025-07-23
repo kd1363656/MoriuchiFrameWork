@@ -120,9 +120,9 @@ void ImGuiManager::UpdateComponentInspector(std::shared_ptr<GameObject> GameObje
 		{
 			ImGui::SameLine(212.0f , 0.0f);
 
-			if (ImGui::Button("Delete"))
+			if (ImGui::SmallButton("Delete"))
 			{
-				GameObject->SetIsDeleteRequested(true);
+				value_->SetIsDeleteRequested(true);
 			}
 
 			value_->ImGuiComponentViewer();

@@ -5,7 +5,6 @@
 #include "../Component/Render/3D/AnimationModelComponent/AnimationModelComponent.h"
 #include "../Component/Render/3D/StaticModelComponent/StaticModelComponent.h"
 #include "../Component/Transform/3D/Transform3DComponent.h"
-#include "../Component/ParentComponent/ParentComponent.h"
 
 #include "../Scene/SceneManager.h"
 
@@ -16,7 +15,7 @@ void Factory::Init()
 
 void Factory::AttachComponent(std::weak_ptr<GameObject> GameObject, std::string_view WantAttachComponent)
 {
-	auto itr_ = m_componentFactoryMethodList.find(WantAttachComponent);
+	auto itr_ = m_componentFactoryMethodList.find(WantAttachComponent.data());
 
 	if (itr_ == m_componentFactoryMethodList.end())
 	{
@@ -26,6 +25,7 @@ void Factory::AttachComponent(std::weak_ptr<GameObject> GameObject, std::string_
 
 	auto component_ = itr_->second();
 	// コンポーネントの所持者、名前を設定
+	component_->Init       ();
 	component_->SetOwner   (GameObject);
 	component_->SetTypeName(itr_->first);
 
@@ -53,8 +53,7 @@ void Factory::RegisterComponentFactoryMethod()
 	RegisterComponentFactoryMethod<AnimationModelComponent>();
 	RegisterComponentFactoryMethod<StaticModelComponent>   ();
 	RegisterComponentFactoryMethod<Transform3DComponent>   ();
-	RegisterComponentFactoryMethod<ParentComponent>        ();
-
+	
 #ifdef _DEBUG
 	KdDebugGUI::Instance().AddLog("\n============ End register gameObject factory ==============\n\n\n\n");
 #endif // _DEBUG

@@ -128,4 +128,6 @@
 //===============================================
 
 #include "json.hpp"
-#include "../Src/Application/Component/ComponentBase.h"
+#include "../Src/Application/Component/Component.h"
+#include "../Src/Application/Component/ComponentOwnedBase.h"
+#include "../Src/Application/Component/ComponentCommonBehaviorBase.h"

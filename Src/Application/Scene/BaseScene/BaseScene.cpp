@@ -4,7 +4,7 @@
 
 #include "../../Component/Render/3D/StaticModelComponent/StaticModelComponent.h"
 
-#include "../../Component/Render/3D/Render3DComponent.h"
+#include "../../Component/Render/3D/Render3DCommonComponent.h"
 
 void BaseScene::PreUpdate()
 {
@@ -67,7 +67,7 @@ void BaseScene::Draw()
 		{
 			if(auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DComponent::DrawType::GenerateDepthFromMapLight);
+				render_->Draw(Render3DCommonComponent::DrawType::GenerateDepthFromMapLight);
 			}
 		}
 	}
@@ -81,7 +81,7 @@ void BaseScene::Draw()
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DComponent::DrawType::UnLit);
+				render_->Draw(Render3DCommonComponent::DrawType::UnLit);
 			}
 		}
 	}
@@ -95,7 +95,7 @@ void BaseScene::Draw()
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DComponent::DrawType::Lit);
+				render_->Draw(Render3DCommonComponent::DrawType::Lit);
 			}
 		}
 	}
@@ -109,7 +109,7 @@ void BaseScene::Draw()
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DComponent::DrawType::Effect);
+				render_->Draw(Render3DCommonComponent::DrawType::Effect);
 			}
 		}
 	}
@@ -123,7 +123,7 @@ void BaseScene::Draw()
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DComponent::DrawType::Bright);
+				render_->Draw(Render3DCommonComponent::DrawType::Bright);
 			}
 		}
 	}
