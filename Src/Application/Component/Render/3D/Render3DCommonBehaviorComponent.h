@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 // どのように描画、シェーダーを適用するかを決めるコンポーネント
-class Render3DCommonComponent : public Component::CommonBehaviorBase
+class Render3DCommonBehaviorComponent : public Component::CommonBehaviorBase
 {
 
 public:
@@ -22,12 +22,12 @@ public:
 		Toon        = 1 << 1 ,
 	};
 
-	Render3DCommonComponent ()          = default;
-	~Render3DCommonComponent() override = default;
+	Render3DCommonBehaviorComponent ()          = default;
+	~Render3DCommonBehaviorComponent() override = default;
 
 	void Init() override;
 	
-	void ImGuiComponentViewer() override;
+	void ImGuiPrefabInspector() override;
 
 	void           LoadPrefabData(const nlohmann::json& Json) override;
 	nlohmann::json SavePrefabData()                           override;

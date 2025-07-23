@@ -13,7 +13,7 @@ public:
 	
 	void PreUpdate() override;
 
-	void ImGuiComponentViewer() override;
+	virtual void ImGuiSpawnInspector() override;
 	
 	void           Deserialize(const nlohmann::json& Json) override; 
 	nlohmann::json Serialize  ()                           override;
@@ -22,9 +22,10 @@ public:
 
 private:
 
-	Math::Vector3    m_position = Math::Vector3::Zero;
+	Math::Matrix m_matrix = Math::Matrix::Identity;
+
 	Math::Quaternion m_rotation = Math::Quaternion::Identity;
 	Math::Vector3    m_scale    = Math::Vector3::Zero;
+	Math::Vector3    m_position = Math::Vector3::Zero;
 
-	Math::Matrix m_matrix = Math::Matrix::Identity;
 };

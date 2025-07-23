@@ -125,7 +125,9 @@ void ImGuiManager::UpdateComponentInspector(std::shared_ptr<GameObject> GameObje
 				value_->SetIsDeleteRequested(true);
 			}
 
-			value_->ImGuiComponentViewer();
+			value_->ImGuiSpawnInspector ();
+			// あとでプレハブ用の関数を作る
+			value_->ImGuiPrefabInspector();
 			ImGui::TreePop();
 		}
 		

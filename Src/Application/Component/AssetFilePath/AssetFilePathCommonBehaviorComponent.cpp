@@ -1,26 +1,26 @@
-﻿#include "AssetFilePathComponent.h"
+﻿#include "AssetFilePathCommonBehaviorComponent.h"
 
 #include ",,/../../../Utility/ImGui/ImGuiUtility.h"
 
-void AssetFilePathComponent::Init()
+void AssetFilePathCommonBehaviorComponent::Init()
 {
 	m_assetFilePath.clear();
 	m_hasPathChanged = false;
 }
 
-void AssetFilePathComponent::ImGuiComponentViewer(const char* Label)
+void AssetFilePathCommonBehaviorComponent::ImGuiPrefabInspector(const char* Label)
 {
 	// ファイルパスの変更を受け取る
 	m_hasPathChanged = ImGuiUtility::SelectFolderPath(Label , m_assetFilePath);
 }
 
-void AssetFilePathComponent::LoadPrefabData(const nlohmann::json& Json)
+void AssetFilePathCommonBehaviorComponent::LoadPrefabData(const nlohmann::json& Json)
 {
 	if (Json.is_null()) { return; }
 
 	m_assetFilePath = Json.value("AssetFilePath" , "");
 }
-nlohmann::json AssetFilePathComponent::SavePrefabData()
+nlohmann::json AssetFilePathCommonBehaviorComponent::SavePrefabData()
 {
 	auto json_ = nlohmann::json();
 

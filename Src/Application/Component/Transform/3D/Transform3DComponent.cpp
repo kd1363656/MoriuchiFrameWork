@@ -7,11 +7,11 @@
 
 void Transform3DComponent::Init()
 {
-	m_position = Math::Vector3::Zero;
+	m_matrix = Math::Matrix::Identity;
+
 	m_rotation = Math::Quaternion::Identity;
 	m_scale    = Math::Vector3::Zero;
-
-	m_matrix = Math::Matrix::Identity;
+	m_position = Math::Vector3::Zero;
 }
 
 void Transform3DComponent::PreUpdate()
@@ -25,7 +25,7 @@ void Transform3DComponent::PreUpdate()
 	m_matrix = scaleMat_ * rotationMat_ * transMat_;
 }
 
-void Transform3DComponent::ImGuiComponentViewer()
+void Transform3DComponent::ImGuiSpawnInspector()
 {
 	Math::Vector3 radian_ = Math::Vector3::Zero;
 

@@ -4,6 +4,7 @@ class Transform3DComponent;
 
 class Transform3DLinkerComponent : public Component::CommonBehaviorBase
 {
+
 public:
 
 	Transform3DLinkerComponent ()          = default;

@@ -1,4 +1,4 @@
-﻿#include "Render3DCommonComponent.h"
+﻿#include "Render3DCommonBehaviorComponent.h"
 
 #include "../../Transform/3D/Transform3DComponent.h"
 
@@ -8,7 +8,7 @@
 #include "../../../Utility/ImGui/ImGuiUtility.h"
 #include "../../../Utility/Json/JsonUtility.h"
 
-void Render3DCommonComponent::Init()
+void Render3DCommonBehaviorComponent::Init()
 {
 	m_color = kWhiteColor;
 
@@ -16,7 +16,7 @@ void Render3DCommonComponent::Init()
 	m_shaderType = 0u;
 }
 
-void Render3DCommonComponent::ImGuiComponentViewer()
+void Render3DCommonBehaviorComponent::ImGuiPrefabInspector()
 {
 	// "ImGui"用のリストのため"static"変数を定義
 	static const std::vector<CommonStruct::BitShiftList> drawTypeList_ = 
@@ -39,7 +39,7 @@ void Render3DCommonComponent::ImGuiComponentViewer()
 	ImGuiUtility::BitShiftSelector("ShaderType" , m_shaderType , shaderTypeList_);
 }
 
-void Render3DCommonComponent::LoadPrefabData(const nlohmann::json& Json)
+void Render3DCommonBehaviorComponent::LoadPrefabData(const nlohmann::json& Json)
 {
 	if (Json.is_null()) { return; }
 
@@ -48,7 +48,7 @@ void Render3DCommonComponent::LoadPrefabData(const nlohmann::json& Json)
 	m_drawType   = Json.value("DrawType"   , 0u);
 	m_shaderType = Json.value("ShaderType" , 0u);
 }
-nlohmann::json Render3DCommonComponent::SavePrefabData()
+nlohmann::json Render3DCommonBehaviorComponent::SavePrefabData()
 {
 	auto json_ = nlohmann::json();
 

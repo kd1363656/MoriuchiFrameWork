@@ -3,8 +3,9 @@
 #include "../../GameObject/GameObject.h"
 
 #include "../../Component/Render/3D/StaticModelComponent/StaticModelComponent.h"
+#include "../../Component/Render/3D/AnimationModelComponent/AnimationModelComponent.h"
 
-#include "../../Component/Render/3D/Render3DCommonComponent.h"
+#include "../../Component/Render/3D/Render3DCommonBehaviorComponent.h"
 
 void BaseScene::PreUpdate()
 {
@@ -49,12 +50,13 @@ void BaseScene::PostUpdate()
 	}
 }
 
+// カメラを描画するために必要
 void BaseScene::PreDraw()
 {
-	for (const auto& gameObject_ : m_gameObjectList)
-	{
-		gameObject_->PreUpdate();
-	}
+	//for (const auto& gameObject_ : m_gameObjectList)
+	//{
+	//	gameObject_->PreUpdate();
+	//}
 }
 
 void BaseScene::Draw()
@@ -63,11 +65,16 @@ void BaseScene::Draw()
 	// 光を遮るオブジェクト(不透明な物体や2Dキャラ)はBeginとEndの間にまとめてDrawする
 	KdShaderManager::Instance().m_StandardShader.BeginGenerateDepthMapFromLight();
 	{
-		for (const auto& obj : m_gameObjectList)
+		for (const auto& obj_ : m_gameObjectList)
 		{
-			if(auto render_ = obj->GetComponent<StaticModelComponent>().lock())
+			if(auto render_ = obj_->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DCommonComponent::DrawType::GenerateDepthFromMapLight);
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::GenerateDepthFromMapLight);
+			}
+
+			if(auto render_ = obj_->GetComponent<AnimationModelComponent>().lock())
+			{
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::GenerateDepthFromMapLight);
 			}
 		}
 	}
@@ -81,7 +88,12 @@ void BaseScene::Draw()
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DCommonComponent::DrawType::UnLit);
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::UnLit);
+			}
+
+			if (auto render_ = obj->GetComponent<AnimationModelComponent>().lock())
+			{
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::UnLit);
 			}
 		}
 	}
@@ -95,7 +107,12 @@ void BaseScene::Draw()
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DCommonComponent::DrawType::Lit);
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::Lit);
+			}
+
+			if (auto render_ = obj->GetComponent<AnimationModelComponent>().lock())
+			{
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::Lit);
 			}
 		}
 	}
@@ -109,7 +126,12 @@ void BaseScene::Draw()
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DCommonComponent::DrawType::Effect);
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::Effect);
+			}
+
+			if (auto render_ = obj->GetComponent<AnimationModelComponent>().lock())
+			{
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::Effect);
 			}
 		}
 	}
@@ -123,7 +145,12 @@ void BaseScene::Draw()
 		{
 			if (auto render_ = obj->GetComponent<StaticModelComponent>().lock())
 			{
-				render_->Draw(Render3DCommonComponent::DrawType::Bright);
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::Bright);
+			}
+
+			if (auto render_ = obj->GetComponent<AnimationModelComponent>().lock())
+			{
+				render_->Draw(Render3DCommonBehaviorComponent::DrawType::Bright);
 			}
 		}
 	}

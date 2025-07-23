@@ -16,7 +16,8 @@ public:
 	virtual void Update    () { /*　必要に応じてオーバーライドしてください */ }
 	virtual void PostUpdate() { /*　必要に応じてオーバーライドしてください */ }
 
-	virtual void ImGuiComponentViewer() { /*　必要に応じてオーバーライドしてください */ }
+	virtual void ImGuiSpawnInspector () { /*　必要に応じてオーバーライドしてください */ }
+	virtual void ImGuiPrefabInspector() { /*　必要に応じてオーバーライドしてください */ }
 
 	virtual void           Deserialize(const nlohmann::json& Json) { /*　必要に応じてオーバーライドしてください */ }
 	virtual nlohmann::json Serialize  ()                           { return nlohmann::json();					   }

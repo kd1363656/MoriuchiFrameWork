@@ -1,17 +1,16 @@
 ﻿#pragma once
 
 // アセットへのファイルパスを選択するためのコンポーネント
-class AssetFilePathComponent : public Component::CommonBehaviorBase
+class AssetFilePathCommonBehaviorComponent : public Component::CommonBehaviorBase
 {
 public:
 
-	AssetFilePathComponent ()          = default;
-	~AssetFilePathComponent() override = default;
+	AssetFilePathCommonBehaviorComponent()          = default;
+	~AssetFilePathCommonBehaviorComponent() override = default;
 
 	void Init() override;
 
-	void ImGuiComponentViewer() override {};
-	void ImGuiComponentViewer(const char* Label);
+	void ImGuiPrefabInspector(const char* Label);
 	
 	void           LoadPrefabData(const nlohmann::json& Json) override;
 	nlohmann::json SavePrefabData()                           override;

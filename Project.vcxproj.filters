@@ -375,7 +375,7 @@
     <ClInclude Include="Src\Application\Component\Render\3D\StaticModelComponent\StaticModelComponent.h">
       <Filter>Src\Application\Component\Render\3D\StaticModelComponent</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Component\Render\3D\Render3DCommonComponent.h">
+    <ClInclude Include="Src\Application\Component\Render\3D\Render3DCommonBehaviorComponent.h">
       <Filter>Src\Application\Component\Render\3D</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Utility\ImGui\ImGuiUtility.h">
@@ -390,10 +390,10 @@
     <ClInclude Include="Src\Application\Utility\Singleton\SingletonBase.h">
       <Filter>Src\Application\Utility\Singleton</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Component\Specialized\Camera\CameraCommonComponent.h">
+    <ClInclude Include="Src\Application\Component\Specialized\Camera\CameraCommonBehaviorComponent.h">
       <Filter>Src\Application\Component\Specialized\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="Src\Application\Component\AssetFilePath\AssetFilePathComponent.h">
+    <ClInclude Include="Src\Application\Component\AssetFilePath\AssetFilePathCommonBehaviorComponent.h">
       <Filter>Src\Application\Component\AssetFilePath</Filter>
     </ClInclude>
     <ClInclude Include="Src\Application\Component\ComponentOwnedBase.h">
@@ -404,6 +404,9 @@
     </ClInclude>
     <ClInclude Include="Src\Application\Component\Linker\Transform\3D\Transform3DLinkerComponent.h">
       <Filter>Src\Application\Component\Linker\Transform\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Application\Component\Specialized\Camera\TPVCamera\TPVCameraComponent.h">
+      <Filter>Src\Application\Component\Specialized\Camera\TPVCamera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -569,7 +572,7 @@
     <ClCompile Include="Src\Application\Component\Render\3D\StaticModelComponent\StaticModelComponent.cpp">
       <Filter>Src\Application\Component\Render\3D\StaticModelComponent</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Component\Render\3D\Render3DCommonComponent.cpp">
+    <ClCompile Include="Src\Application\Component\Render\3D\Render3DCommonBehaviorComponent.cpp">
       <Filter>Src\Application\Component\Render\3D</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Utility\ImGui\ImGuiUtility.cpp">
@@ -581,14 +584,17 @@
     <ClCompile Include="Src\System\ImGui\ImGuiManager.cpp">
       <Filter>Src\System\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Component\Specialized\Camera\CameraCommonComponent.cpp">
+    <ClCompile Include="Src\Application\Component\Specialized\Camera\CameraCommonBehaviorComponent.cpp">
       <Filter>Src\Application\Component\Specialized\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="Src\Application\Component\AssetFilePath\AssetFilePathComponent.cpp">
+    <ClCompile Include="Src\Application\Component\AssetFilePath\AssetFilePathCommonBehaviorComponent.cpp">
       <Filter>Src\Application\Component\AssetFilePath</Filter>
     </ClCompile>
     <ClCompile Include="Src\Application\Component\Linker\Transform\3D\Transform3DLinkerComponent.cpp">
       <Filter>Src\Application\Component\Linker\Transform\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\Specialized\Camera\TPVCamera\TPVCameraComponent.cpp">
+      <Filter>Src\Application\Component\Specialized\Camera\TPVCamera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
