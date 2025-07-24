@@ -64,9 +64,8 @@ void ImGuiManager::UpdateHierarchyWindow()
 			ImGui::Separator();
 			ImGui::PopID    ();
 		}
-
-		ImGui::End();
 	}
+	ImGui::End();
 }
 
 void ImGuiManager::UpdateAddGameObjectButton() const
@@ -101,9 +100,8 @@ void ImGuiManager::UpdateInspectorWindow()
 			UpdateAddComponentButton  (gameObject_);
 			UpdateComponentInspector  (gameObject_);
 		}
-
-		ImGui::End();
 	}
+	ImGui::End();
 }
 
 void ImGuiManager::UpdateComponentInspector(std::shared_ptr<GameObject> GameObject) const

@@ -121,6 +121,9 @@
     <Filter Include="Src\Application\Utility\Singleton">
       <UniqueIdentifier>{2d82b67c-2d92-473f-9001-5ba273359e4e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Src\Application\Component\Render">
+      <UniqueIdentifier>{bda3b78d-6594-4de1-aa70-7a16e3d8d4d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Pch.h">
@@ -342,6 +345,9 @@
     <ClInclude Include="Src\Application\Component\ComponentCommonBehaviorBase.h">
       <Filter>Src\Application\Component</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Application\Component\Render\RenderComponentOwnedBase.h">
+      <Filter>Src\Application\Component\Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Pch.cpp">
@@ -502,6 +508,9 @@
     </ClCompile>
     <ClCompile Include="Src\System\ImGui\ImGuiManager.cpp">
       <Filter>Src\System\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Application\Component\Render\RenderComoonentOwnedBase.cpp">
+      <Filter>Src\Application\Component\Render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

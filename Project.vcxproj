@@ -276,6 +276,7 @@
     <ClInclude Include="Src\Application\Component\Component.h" />
     <ClInclude Include="Src\Application\Component\ComponentCommonBehaviorBase.h" />
     <ClInclude Include="Src\Application\Component\ComponentOwnedBase.h" />
+    <ClInclude Include="Src\Application\Component\Render\RenderComponentOwnedBase.h" />
     <ClInclude Include="Src\Application\Component\Transform\3D\Transform3DComponent.h" />
     <ClInclude Include="Src\Application\Factory\Factory.h" />
     <ClInclude Include="Src\Application\GameObject\GameObject.h" />
@@ -341,6 +342,7 @@
     <ClCompile Include="..\Library\imgui\imgui_stdlib.cpp" />
     <ClCompile Include="..\Library\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\Library\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Src\Application\Component\Render\RenderComoonentOwnedBase.cpp" />
     <ClCompile Include="Src\Application\Component\Transform\3D\Transform3DComponent.cpp" />
     <ClCompile Include="Src\Application\Factory\Factory.cpp" />
     <ClCompile Include="Src\Application\GameObject\GameObject.cpp" />
